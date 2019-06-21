@@ -13269,11 +13269,11 @@ public class CoreV1Api {
      * @param gracePeriodSeconds The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately. (optional)
      * @param orphanDependents Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the \&quot;orphan\&quot; finalizer will be added to/removed from the object&#39;s finalizers list. Either this field or PropagationPolicy may be set, but not both. (optional)
      * @param propagationPolicy Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: &#39;Orphan&#39; - orphan the dependents; &#39;Background&#39; - allow the garbage collector to delete the dependents in the background; &#39;Foreground&#39; - a cascading policy that deletes all dependents in the foreground. (optional)
-     * @return V1Status
+     * @return V1Pod
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public V1Status deleteNamespacedPod(String name, String namespace, String pretty, V1DeleteOptions body, String dryRun, Integer gracePeriodSeconds, Boolean orphanDependents, String propagationPolicy) throws ApiException {
-        ApiResponse<V1Status> resp = deleteNamespacedPodWithHttpInfo(name, namespace, pretty, body, dryRun, gracePeriodSeconds, orphanDependents, propagationPolicy);
+    public V1Pod deleteNamespacedPod(String name, String namespace, String pretty, V1DeleteOptions body, String dryRun, Integer gracePeriodSeconds, Boolean orphanDependents, String propagationPolicy) throws ApiException {
+        ApiResponse<V1Pod> resp = deleteNamespacedPodWithHttpInfo(name, namespace, pretty, body, dryRun, gracePeriodSeconds, orphanDependents, propagationPolicy);
         return resp.getData();
     }
 
@@ -13288,12 +13288,12 @@ public class CoreV1Api {
      * @param gracePeriodSeconds The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately. (optional)
      * @param orphanDependents Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the \&quot;orphan\&quot; finalizer will be added to/removed from the object&#39;s finalizers list. Either this field or PropagationPolicy may be set, but not both. (optional)
      * @param propagationPolicy Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: &#39;Orphan&#39; - orphan the dependents; &#39;Background&#39; - allow the garbage collector to delete the dependents in the background; &#39;Foreground&#39; - a cascading policy that deletes all dependents in the foreground. (optional)
-     * @return ApiResponse&lt;V1Status&gt;
+     * @return ApiResponse&lt;V1Pod&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<V1Status> deleteNamespacedPodWithHttpInfo(String name, String namespace, String pretty, V1DeleteOptions body, String dryRun, Integer gracePeriodSeconds, Boolean orphanDependents, String propagationPolicy) throws ApiException {
+    public ApiResponse<V1Pod> deleteNamespacedPodWithHttpInfo(String name, String namespace, String pretty, V1DeleteOptions body, String dryRun, Integer gracePeriodSeconds, Boolean orphanDependents, String propagationPolicy) throws ApiException {
         com.squareup.okhttp.Call call = deleteNamespacedPodValidateBeforeCall(name, namespace, pretty, body, dryRun, gracePeriodSeconds, orphanDependents, propagationPolicy, null, null);
-        Type localVarReturnType = new TypeToken<V1Status>(){}.getType();
+        Type localVarReturnType = new TypeToken<V1Pod>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
